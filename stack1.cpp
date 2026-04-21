@@ -21,6 +21,43 @@ int pop(stack*& h) {
     return i;
 }
 
+void reverse(stack*& h) {
+    stack* head1 = NULL;
+    while (h) {
+        push(head1, pop(h));
+    }
+    h = head1;
+}
+
+int findmin(stack*& h) { //поиск мин
+    int mm = h->inf;
+    stack* tmp = NULL;
+    while (h) {
+        int x = pop(h);
+        if (x < mm) {
+            mm = x;
+        }
+        push(tmp, x);
+    }
+    h = tmp;
+    return mm;
+}
+
+// поиск макс
+int findmax(stack*& h) {
+    int mm = h->inf;
+    stack* tmp = NULL;
+    while (h) {
+        int x = pop(h);
+        if (x > mm) {
+            mm = x;
+        }
+        push(tmp, x);
+    }
+    h = tmp;
+    return mm;
+}
+
 void print(stack* h) {
     stack* tmp = NULL;
     while (h) {
