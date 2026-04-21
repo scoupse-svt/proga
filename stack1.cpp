@@ -58,6 +58,31 @@ int findmax(stack*& h) {
     return mm;
 }
 
+// после каждого минимального числа вставляем максимальное
+void insert(stack*& h) {
+    if (!h) return;
+
+    int minv = findmin(h);
+    int maxv = findmax(h);
+
+    // если минимальное и максимальное совпадают — ничего не делаем
+    if (minv == maxv) return;
+    reverse(h);
+
+    stack* res = NULL;
+
+    while (h) {
+        int x = pop(h);
+        push(res, x);
+        // если это минимальное число — вставляем максимальное
+        if (x == minv) {
+            push(res, maxv);
+        }
+    }
+    h = res;
+    reverse(h);
+}
+
 void print(stack* h) {
     stack* tmp = NULL;
     while (h) {
@@ -82,4 +107,10 @@ int main() {
         cout << x << " ";
         push(h, x);
     }
+    cout << endl;
+
+    insert(h);
+
+    cout << "Результат: ";
+    print(h);
 }
