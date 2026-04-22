@@ -32,6 +32,16 @@ int pop(queue*& h, queue*& t) { //ф-ция удаления из головы
     return val;
 }
 
+bool check(int n) { //проверка на составное число     
+    if (n <= 1) return false;     
+    if (n == 2 || n == 3) return false;     
+    if (n % 2 == 0) return true;     
+    for (int i = 3; i * i <= n; i += 2){         
+        if (n % i == 0) return true;     
+    }    
+    return false; 
+}
+
 void print(queue* h, queue* t) {
     queue* tmph = NULL;
     queue* tmpt = NULL;
