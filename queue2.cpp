@@ -32,6 +32,23 @@ int pop(queue*& h, queue*& t) { //ф-ция удаления из головы
     return val;
 }
 
+// поиск минимального числа в очереди
+int mini(queue*& h, queue*& t) {
+    queue* tmph = NULL;
+    queue* tmpt = NULL;
+    int m = h->inf;
+    while (h) {
+        int x = pop(h, t);
+        if (x < m) {
+            m = x;
+        }
+        push(tmph, tmpt, x);
+    }
+    h = tmph;
+    t = tmpt;
+    return m;
+}
+
 void print(queue* h, queue* t) {
     queue* tmph = NULL;
     queue* tmpt = NULL;
