@@ -34,6 +34,25 @@ bool check(char c) {
     return (c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u');
 }
 
+// вставка после первой гласной
+void insert(stack*& h) {
+    if (!h) return;
+
+    stack* res = NULL;
+    bool inserted = false;
+
+    while (h) {
+        char x = pop(h);
+        push(res, x);
+
+        if (!inserted && check(x)) {
+            push(res, '?');
+            inserted = true;
+        }
+    }
+    h = res;
+}
+
 void print(stack* h) {
     stack* tmp = NULL;
     while (h) {
@@ -61,4 +80,10 @@ int main() {
     while (temp) {
         push(h, pop(temp));
     }
+
+    insert(h);
+    reverse(h);
+
+    cout << "Результат: ";
+    print(h);
 }
