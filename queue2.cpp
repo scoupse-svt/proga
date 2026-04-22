@@ -66,6 +66,33 @@ int findlast(queue* h, queue* t) {
     return last;
 }
 
+//после минимального числа вставляем последний четный
+void insert(queue*& head, queue*& tail) {
+    if (!head) return;
+
+    int m = mini(head, tail);
+    int last = findlast(head, tail);
+    if (last == 0) return; // нет четных чисел
+
+    queue* temph = NULL;
+    queue* tempt = NULL;
+
+    while (head) {
+        int x = pop(head, tail);
+        push(temph, tempt, x);
+
+        if (x == m) {
+            push(temph, tempt, last);
+        }
+    }
+
+    while (temph) {
+        int x = pop(temph, tempt);
+        push(head, tail, x);
+    }
+}
+
+
 void print(queue* h, queue* t) {
     queue* tmph = NULL;
     queue* tmpt = NULL;
@@ -95,4 +122,9 @@ int main() {
         cin >> x;
         push(h, t, x);
     }
+
+    insert(h, t);
+
+    cout << "Результат: ";
+    print(h, t);
 }
