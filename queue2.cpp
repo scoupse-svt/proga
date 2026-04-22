@@ -49,6 +49,23 @@ int mini(queue*& h, queue*& t) {
     return m;
 }
 
+//последний четный элемент
+int findlast(queue* h, queue* t) {
+    queue* tmph = NULL;
+    queue* tmpt = NULL;
+    int last = 0;
+    while (h) {
+        int x = pop(h, t);
+        if (x % 2 == 0) {
+            last = x;
+        }
+        push(tmph, tmpt, x);
+    }
+    h = tmph;
+    t = tmpt;
+    return last;
+}
+
 void print(queue* h, queue* t) {
     queue* tmph = NULL;
     queue* tmpt = NULL;
