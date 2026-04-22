@@ -42,6 +42,27 @@ bool check(int n) { //проверка на составное число
     return false; 
 }
 
+void circle(queue*& h, queue*& t) {
+    queue* t_b = t;
+    bool fl = false;
+
+    while (h != t_b) {
+        if (!check(h->inf)) {   // если не составное
+            int x = pop(h, t);
+            push(h, t, x);
+        }
+        else {                    // если составное
+            fl = true;
+            break;
+        }
+    }
+
+    if (!fl && !check(h->inf)) {
+        int x = pop(h, t);
+        push(h, t, x);
+    }
+}
+
 void print(queue* h, queue* t) {
     queue* tmph = NULL;
     queue* tmpt = NULL;
@@ -70,4 +91,9 @@ int main() {
         cin >> x;
         push(h, t, x);
     }
+
+    circle(h, t);
+
+    cout << "Результат: ";
+    print(h, t);
 }
