@@ -29,6 +29,11 @@ void reverse(stack*& h) {
     h = head1;
 }
 
+bool check(char c) {
+    c = tolower(c);
+    return (c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u');
+}
+
 void print(stack* h) {
     stack* tmp = NULL;
     while (h) {
