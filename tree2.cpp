@@ -52,6 +52,43 @@ tree* find(tree* tr, int x) {
     }
 }
 
+tree* findsibl(tree* tr, int x) {//найти брата
+    tree* nX = find(tr, x);
+    tree* pt = nX->pt;
+    if (!pt) return NULL;  // у корня нет братьев
+
+    if (pt->lt == nX) return pt->rt;  // x слева - брат справа
+    else return pt->lt; // x справа - брат слева
+}
+
+tree* findlt(tree* tr, int x) { //найти левого племянника
+    tree* nX = find(tr, x);
+    if (!nX) {
+        cout << "Узел не найден!" << endl;
+        return 0;
+    }
+
+    tree* pt = nX->pt;
+    if (!pt) {
+        cout << "Узел " << x << " — корень, у него нет братьев" << endl;
+        return 0;
+    }
+
+    tree* sibl = findsibl(tr, x);
+    if (!sibl) {
+        cout << "У узла " << x << " нет братьев" << endl;
+        return 0;
+    }
+
+    if (sibl->lt) {
+        return sibl ->lt;
+    }
+    else {
+        cout << "У брата узла " << x << " нет левого ребенка" << endl;
+        return 0;
+    }
+}
+
 void inorder(tree* tr) { //симметричный обход для вывода
     if (tr) {
         inorder(tr->lt);
@@ -81,4 +118,5 @@ int main()
     cout << "Текущее дерево (симметричный обход): ";
     inorder(root);
     cout << endl;
+
 }
