@@ -89,6 +89,27 @@ tree* findlt(tree* tr, int x) { //найти левого племянника
     }
 }
 
+bool deletelt(tree*& tr, int x) {//удаление левого племянника
+    tree* nephew = findlt(tr, x);
+
+    if (!nephew) {
+        return false;
+    }
+
+    tree* ptnephew = nephew->pt;
+
+    // обнуляем указатель у родителя
+    if (ptnephew->lt == nephew) {
+        ptnephew->lt = NULL;
+    }
+    else {
+        ptnephew->rt = NULL;
+    }
+
+    delete nephew;
+    return true;
+}
+
 void inorder(tree* tr) { //симметричный обход для вывода
     if (tr) {
         inorder(tr->lt);
@@ -119,4 +140,16 @@ int main()
     inorder(root);
     cout << endl;
 
+    cout << "Введите узел X: ";
+    cin >> x;
+
+    bool fl = deletelt(root, x);
+
+    if (fl) {
+        cout << "Дерево после удаления племенника: ";
+        inorder(root);
+    }
+    else {
+        return 0;
+    }
 }
