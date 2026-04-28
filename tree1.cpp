@@ -71,6 +71,19 @@ int sumparents(tree* tr, int x) {
     return summa;
 }
 
+int sumnodes(tree* tr) {
+    if (!tr) return 0;
+
+    int summa = 0;
+
+    if (tr->lt != NULL || tr->rt != NULL) summa += tr->inf;
+
+    summa += sumnodes(tr->lt); //рекурсивно обходим дальше
+    summa += sumnodes(tr->rt);
+
+    return summa;
+}
+
 void inorder(tree* tr) { //симметричный обход для вывода
     if (tr) {
         inorder(tr->lt);
@@ -108,7 +121,13 @@ int main()
     if (summa != 0) {
         cout << "Сумма предков узла " << x << " = " << summa << endl;
     }
+
+    int summ = sumnodes(root);
+
+    if (summ != 0) {
+        cout << "Сумма внутренних узлов = " << summ << endl;
+    }
     else {
-        return 0;
+        cout << "Есть только корень.";
     }
 }
