@@ -1,0 +1,47 @@
+\documentclass[12pt]{book}
+
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage{indentfirst}
+\usepackage{geometry}
+\usepackage{titlesec}
+\geometry{
+  a4paper,
+  top=2.5cm,      % верхнее поле
+  bottom=2.5cm,   % нижнее поле
+  left=3cm,       % левое поле (для переплёта)
+  right=2cm,      % правое поле
+}
+
+\titleformat{\section}
+  {\normalfont\bfseries\centering}
+  {}{0pt}{}
+
+
+\title{Избранные произведения}
+\author{ДАНИИЛ ХАРМС}
+\date{}
+
+\begin{document}
+
+\setlength{\parindent}{1.5cm}
+\maketitle
+\vspace*{-\baselineskip}
+
+\chapter{СУД ЛИНЧА}
+\input{chapters/sud-lincha.tex}
+
+\chapter{ТЮК!}
+\input{chapters/tuk.tex}
+
+\chapter{ВЛАС И МИШКА}
+\input{chapters/vlandmish.tex}
+
+\chapter{ЧТО ТЕПЕРЬ ПРОДАЮТ В МАГАЗИНАХ}
+\input{chapters/chtoprod.tex}
+
+\chapter{МАШКИН УБИЛ КОШКИНА}
+\input{chapters/mashkinubkosh.tex}
+
+\end{document}
