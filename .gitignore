@@ -46,3 +46,12 @@
 *.swp
 *.swo
 *~
+
+*.aux
+*.log
+*.out
+*.toc
+*.pdf
+*.fbd_latexmk
+*.fls
+*.synctex.gz
