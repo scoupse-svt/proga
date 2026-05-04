@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1777924039.94349 "c:/Users/Luda/proga/main-book.tex" "main-book.pdf" "main-book" 1777924040.91882 0
+["pdflatex"] 1777927595.47607 "c:/Users/Luda/proga/main-book.tex" "main-book.pdf" "main-book" 1777927596.19648 0
   "C:/Users/Luda/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1777921801 80909 eab91d9745dd2edfd62a31d53cd5fe15 ""
   "C:/Users/Luda/AppData/Local/MiKTeX/fonts/pk/ljfour/lh/lh-t2a/dpi600/labx2488.pk" 1777914635 66304 60534f0292bcd89c2cdc666345fc3325 ""
   "C:/Users/Luda/AppData/Local/MiKTeX/fonts/pk/ljfour/lh/lh-t2a/dpi600/larm1200.pk" 1777911986 27028 37136a25cf4ba84bcce87930f5db1668 ""
@@ -51,8 +51,8 @@
   "chapters/mashkinubkosh.tex" 1777924037 1322 4fea2075629a2cdd94b078d017adf95a ""
   "chapters/sud-lincha.tex" 1777924037 1589 3df726777a95b4c11d52cbd18b36a085 ""
   "chapters/tuk.tex" 1777924037 3005 cc72aba1709a51da9b1ddb4220bdb983 ""
-  "chapters/vlandmish.tex" 1777924037 726 916e84d850f004964aaeb2db83ee4108 ""
-  "main-book.aux" 1777924040 1130 f2d4c9d92bebb8f5ca3381cd54d33b44 "pdflatex"
+  "chapters/vlandmish.tex" 1777924111 726 3c28851f8c43fb803913ce3f4e93e680 ""
+  "main-book.aux" 1777927595 1130 f2d4c9d92bebb8f5ca3381cd54d33b44 "pdflatex"
   "main-book.tex" 1777924037 1062 1eae2ceb7f7608fcdf96eeb963fc05ea ""
   (generated)
   "main-book.aux"

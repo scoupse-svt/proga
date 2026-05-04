@@ -55,3 +55,4 @@
 *.fbd_latexmk
 *.fls
 *.synctex.gz
+*.tex
