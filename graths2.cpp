@@ -6,6 +6,7 @@
 using namespace std;
 
 vector<vector<int>> Gr;   // список смежности 
+vector<bool> used;        //массив посещённых вершин
 int n;                     // количество вершин
 
 //добавление ребра для ориентированного графа
@@ -21,6 +22,36 @@ void addEdge(int u, int v) {
     sort(Gr[u].begin(), Gr[u].end());
 }
 
+//обход в ширину
+void bfs(int start) {
+   
+    vector<int> q; //вектор для очереди
+    int head = 0;
+
+    used[start] = true;
+    q.push_back(start);
+
+    while (head < q.size()) {
+        int x = q[head];
+        head++;
+
+        for (int i = 0; i < Gr[x].size(); i++) {
+            int y = Gr[x][i];
+            if (!used[y]) {
+                used[y] = true;
+                q.push_back(y);
+            }
+        }
+    }
+}
+
+void resetUsed() {
+    for (int i = 0; i < n; i++) {
+        used[i] = false;
+    }
+}
+
+//вывод матрицы смежности
 void print() {
     for (int i = 0; i < n; i++) {
         cout << "Вершина " << i << " : ";
@@ -35,26 +66,48 @@ void print() {
     }
 }
 
-//подсчёт полустепени исхода
-void countvershisxod() {
+//поиск вершин, из которых достижимы все остальные
+void findall() {
 
-    cout << "Полустепени исхода для всех вершин." << endl;
+    vector<int> versh;
+
     for (int i = 0; i < n; i++) {
-        int out = Gr[i].size();   // количество исходящих рёбер
-        cout << "Вершина " << i << " : " << out;
+        resetUsed();
+        bfs(i);
 
-        if (out == 0) {
-            cout << " (нет исходящих рёбер)";
+        // Проверяем, все ли вершины посещены
+        bool allused = true;
+        for (int j = 0; j < n; j++) {
+            if (!used[j]) {
+                allused = false;
+                break;
+            }
+        }
+
+        if (allused) {
+            versh.push_back(i);
+        }
+    }
+
+    if (versh.empty()) {
+        cout << "Нет ни одной вершины, из которой достижимы все остальные.\n";
+    }
+    else {
+        cout << "Вершины: ";
+        for (int v : versh){
+            cout << v << " ";
         }
         cout << endl;
     }
 }
+
 
 int main() {
     setlocale(LC_ALL, "");
 
     n = 8;
     Gr.resize(n);
+    used.resize(n, false);
 
     addEdge(0, 1);
     addEdge(0, 2);
@@ -65,12 +118,12 @@ int main() {
     addEdge(5, 6);
     addEdge(6, 5);
     addEdge(5, 7);
-    addEdge(7, 0); 
+    addEdge(7, 0);
 
     cout << "Список смежности для рёбер" << endl;
     print();
 
     cout << endl;
 
-    countvershisxod();
+    findall();
 }
