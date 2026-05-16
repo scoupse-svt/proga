@@ -255,7 +255,7 @@ int main() {
 
     vector<sotr> workers = inFile();
 
-    M = 13;
+    M = 31;
     hashtable(M);           
 
     for (int i = 0; i < workers.size(); i++) {
