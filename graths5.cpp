@@ -5,6 +5,7 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
+#include <climits>  // для INT_MAX
 using namespace std;
 
 vector<vector<pair<int, int>>> Gr;  // список смежности
@@ -66,7 +67,7 @@ void dikstra(int start) {
         }
         
         // если нет доступных вершин (остальные недостижимы)
-        if (dist[v] == 10000) break;
+        if (dist[v] == INT_MAX) break;
     
         visited[v] = true;
         
@@ -88,7 +89,7 @@ void dikstra(int start) {
     for (int i = 0; i < n; i++) {
         if (i == start) continue;  // пропускаем стартовую вершину
         
-        if (dist[i] == 10000) {
+        if (dist[i] == INT_MAX) {
             cout << "Вершина " << i << ": недостижима\n";
         } 
         else {
