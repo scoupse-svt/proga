@@ -80,6 +80,24 @@ tree* create_tree(string str) {
     return tr;
 }
 
+//префиксная форма, прямой обход
+void preorder(tree* tr) {
+    if (tr) {
+        cout << tr->inf;            
+        preorder(tr->left);         
+        preorder(tr->right);        
+    }
+}
+
+//обратный обход, постфиксная форма
+void postorder(tree* tr) {
+    if (tr) {
+        postorder(tr->left);       
+        postorder(tr->right);       
+        cout << tr->inf;            
+    }
+}
+
 void clear(tree* tr) {
     if (tr) {
         clear(tr->left);
@@ -111,6 +129,14 @@ int main() {
     }
     
     cout << "Исходное выражение: " << clean << endl;
+    
+    cout << "Префиксная форма: ";
+    preorder(root);
+    cout << endl;
+    
+    cout << "Постфиксная форма: ";
+    postorder(root);
+    cout << endl;
     
     clear(root);
 }
